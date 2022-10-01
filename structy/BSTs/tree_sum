@@ -16,7 +16,7 @@ def tree_sum_dfs(root):
 def tree_sum_bfs(root):
     if root is None:
         return 0
-    sum = 0
+    sum: int = 0
     q = deque([root])
     while q:
         curr = q.popleft()
