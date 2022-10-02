@@ -1,0 +1,24 @@
+from collections import deque
+
+class Node:
+  def __init__(self, val):
+    self.val = val
+    self.left = None
+    self.right = None
+
+def bottom_right_value(root):
+    if root is None:
+        return None
+    q = deque([root])
+    # initialize current outside - HOWEVER, IN PYTHON YOU DON'T NEED THIS BUT GOOD PROGRAMMING PRACTICE. PYTHON DOESN'T BLOCK SCOPE VARIABLES INITIALIZED IN BLOCK
+    current = None
+    while q:
+        current = q.popleft()
+        if current.left:
+            q.append(current.left)
+        if current.right:
+            q.append(current.right)
+    return current.val
+    # could also just return current when len(q) == 0 inside loop, avoiding the block scoping stuff (although not even a problem in python)
+    
+    
