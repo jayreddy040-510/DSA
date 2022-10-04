@@ -1,0 +1,67 @@
+class Node:
+    def __init__(self,val):
+        self.val = val
+        self.next = None
+        self.prev = None
+
+class DLL:
+    def __init__(self, start=None):
+        self.start = Node(start) if start else None
+
+    def InsertToEmptyList(self,val):
+        if self.start is None:
+            self.start = Node(val)
+        else:
+            print("the list isn't empty")
+
+    def InsertAtEnd(self, val):
+        if self.start is None:
+            self.start = Node(val)
+        else:
+            curr = self.start
+            while curr.next is not None:
+                curr = curr.next
+            new = Node(val)
+            curr.next = new
+            new.prev = curr
+
+    def DeleteAtEnd(self):
+        if self.start is None:
+            print("empty list, can't delete anything")
+        else:
+            curr = self.start
+            while curr.next is not None:
+                curr = curr.next
+            prev = curr.prev
+            prev.next = None
+
+    def DeleteAtStart(self):
+        if self.start is None:
+            print("empty list, nothing to delete")
+        else:
+            new_start = self.start.next
+            self.start = new_start
+            if new_start is not None:
+                new_start.prev = None 
+
+    def Display(self):
+        if self.start is None:
+            print("nothing to see here, list is empty")
+        else:
+            curr = self.start
+            while curr is not None:
+                print(curr.val)
+                curr = curr.next
+
+x = DLL('a')
+x.InsertAtEnd('b')
+x.InsertAtEnd('c')
+x.InsertAtEnd('d')
+x.InsertAtEnd('e')
+x.DeleteAtStart()
+x.DeleteAtStart()
+x.Display()
+
+
+
+
