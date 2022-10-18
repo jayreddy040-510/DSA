@@ -3,8 +3,11 @@
 def find_avgs_of_subarray(arr, k):
     ret = []
     i = 0
-    while k <= len(arr):
-        ret.append(sum([arr[x] for x in range(i,k)])/(k-i))
+    k_sum = sum([arr[x] for x in range(i,k)])
+    ret.append(k_sum/(k-i))
+    while k < len(arr):
+        k_sum = k_sum - arr[i] + arr[k]
+        ret.append(k_sum/(k-i))
         i, k = i+1, k+1
     return ret
 
